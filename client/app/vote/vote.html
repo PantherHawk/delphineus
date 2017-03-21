@@ -1,0 +1,11 @@
+<div ng-controller="voteCtrl as myIndex">
+    <my-vote class="card-element" ng-repeat="element in myIndex.feed">
+      <label class="rating-upvote">
+        <input type="checkbox" ng-click="myIndex.upvote(element)"
+          />
+        <ng-include src="'upvote.svg'"></ng-include>
+        {{ element.upvotes  }}
+      </label>
+      <hr>
+    </my-vote
+  </div>
