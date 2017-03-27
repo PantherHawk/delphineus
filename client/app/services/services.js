@@ -89,14 +89,25 @@ angular.module('hackSource.services', [])
     postTags: postTags
   };
 })
-.factory('counter', function() {
-  var count = 0;
-  var incrementer = function() {
-    count++;
-  };
-  return {incrementer: incrementer, count: count};
-})
+.factory('counter', ['$http', function($http) {
 
+  var addLikes = function(resourceId, userId) {
+    return $http({
+      method: 'POST',
+      url: 'api/likes',
+      data: {'resourceId': resourceId, 'userId': userId}
+    })
+    .then(function(data) {
+      console.log('like successfully posted', data)
+    })
+    .catch(function(err) {
+      console.log('error', err)
+    });
+
+  }
+
+  return {addLikes: addLikes}
+}])
 .filter('filterByCat', function () {
   return function (items, searchCat) {
     var filtered = [];

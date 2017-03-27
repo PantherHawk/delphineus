@@ -6,6 +6,14 @@ angular.module('hackSource.cards', [])
       $scope.data = data;
     });
 
+
+  $scope.loadMore = function() {
+    var last = $scope.data[$scope.data.length - 1];
+    for(var i = 1; i <= 8; i++) {
+      $scope.data.push(last + i);
+    }
+  };
+
 })
 .directive('myCard', function() {
   return {

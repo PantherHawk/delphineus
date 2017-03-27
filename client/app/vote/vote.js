@@ -3,10 +3,6 @@
 angular.module('hackSource.vote', [])
 
 .factory('counter', ['$http', function($http) {
-	var count = 0;
-	var incrementer = function() {
-		this.count++;
-	}
 
 	var addLikes = function(resourceId, userId) {
 		return $http({
@@ -23,7 +19,7 @@ angular.module('hackSource.vote', [])
 
 	}
 
-	return {incrementer: incrementer, count: count, addLikes: addLikes}
+	return {addLikes: addLikes}
 }])
 .controller('VoteCtrl', function($scope, counter, User) {
 	$scope.flagVariable = false;
