@@ -2,25 +2,7 @@
 
 angular.module('hackSource.vote', [])
 
-.factory('counter', ['$http', function($http) {
 
-	var addLikes = function(resourceId, userId) {
-		return $http({
-			method: 'POST',
-			url: 'api/likes',
-			data: {'resourceId': resourceId, 'userId': userId}
-		})
-		.then(function(data) {
-			console.log('like successfully posted', data)
-		})
-		.catch(function(err) {
-			console.log('error', err)
-		});
-
-	}
-
-	return {addLikes: addLikes}
-}])
 .controller('VoteCtrl', function($scope, counter, User) {
 	$scope.flagVariable = false;
 	var userId;
